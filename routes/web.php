@@ -36,3 +36,7 @@ Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update'
 Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout')->middleware('auth');
 
 Route::resource('orders', 'OrderController')->middleware('auth');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
