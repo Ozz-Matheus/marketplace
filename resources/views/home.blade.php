@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container text-center">
-{{--     <div class="row justify-content-center">
+{{--
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
@@ -18,14 +19,17 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-    <h2>Productos</h2>
+    </div>
+--}}
 
+    <div class="title mt-2 pt-5 pb-3">
+        <h2>Productos</h2>
+    </div>
     <div class="row">
         @foreach( $products as $product)
-        <div class="col-4 mb-5">
+        <div class="col-3 mb-5">
             <div class="card">
-              <img src="{{ asset('images/default.png') }}" class="card-img-top" alt="Imagen de Producto">
+              <img src="{{ asset('images/product-default.jpg') }}" class="card-img-top" alt="Imagen de Producto">
               <div class="card-body">
                 <h5 class="card-title">{{ $product->name }}</h5>
                 <p class="card-text">${{ $product->price }} MXN</p>

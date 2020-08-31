@@ -11,6 +11,7 @@
 	      <th scope="col">Producto</th>
 	      <th scope="col">Precio</th>
 	      <th scope="col">Cantidad</th>
+	      <th scope="col">Eliminar</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -23,12 +24,12 @@
 	      <td>
 	      	<form action="{{ route('cart.update', $item->id) }}">
 	      		<input type="number" min="1" name="quantity" value="{{ $item->quantity }}">
-	      		<button type="submit" class="btn btn-outline-dark btn-sm">Guardar</button>
+	      		<button type="submit" class="btn btn-outline-dark btn-sm"><i class="fas fa-save text-dark"></i></button>
 	      	</form>
 
 	      </td>
 	      <td>
-	      	<a href="{{ route('cart.destroy', $item->id) }}">Eliminar</a>
+	      	<a href="{{ route('cart.destroy', $item->id) }}"><i class="fas fa-window-close text-dark fa-2x"></i></a>
 	      </td>
 	    </tr>
 	    @endforeach
