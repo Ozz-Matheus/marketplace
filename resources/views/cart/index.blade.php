@@ -6,7 +6,7 @@
 
 
 	<table class="table">
-	  <thead class="thead-dark">
+	  <thead class="text-white bg-primary">
 	    <tr>
 	      <th scope="col">Producto</th>
 	      <th scope="col">Precio</th>
@@ -24,12 +24,12 @@
 	      <td>
 	      	<form action="{{ route('cart.update', $item->id) }}">
 	      		<input type="number" min="1" name="quantity" value="{{ $item->quantity }}">
-	      		<button type="submit" class="btn btn-outline-dark btn-sm"><i class="fas fa-save text-dark"></i></button>
+	      		<button type="submit" class="btn btn-outline-primary btn-sm"><i class="fas fa-save text-primary"></i></button>
 	      	</form>
 
 	      </td>
 	      <td>
-	      	<a href="{{ route('cart.destroy', $item->id) }}"><i class="fas fa-window-close text-dark fa-2x"></i></a>
+	      	<a href="{{ route('cart.destroy', $item->id) }}"><i class="fas fa-window-close text-primary fa-2x"></i></a>
 	      </td>
 	    </tr>
 	    @endforeach
@@ -38,6 +38,6 @@
 	<h3>
 		Precio Total : $ {{ Cart::session(auth()->id())->getTotal() }} MXN
 	</h3>
-	<a href="{{ route('cart.checkout') }}" class="btn btn-dark btn-sm" role="button">Finalizar Compra</a>
+	<a href="{{ route('cart.checkout') }}" class="btn btn-primary btn-sm" role="button">Finalizar Compra</a>
 
 @endsection

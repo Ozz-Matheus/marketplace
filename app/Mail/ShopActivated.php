@@ -8,15 +8,14 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ShopActivationRequest extends Mailable
+class ShopActivated extends Mailable
 {
     use Queueable, SerializesModels;
     /**
      * @var shop
      */
     public $shop;
-    public $subject = "Solicitud para nueva tienda";
-
+    public $subject = "Solicitud aprobada";
 
     /**
      * Create a new message instance.
@@ -35,6 +34,6 @@ class ShopActivationRequest extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.admin.shop-activation');
+        return $this->markdown('mail.customer.shop-activated');
     }
 }

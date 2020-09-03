@@ -6,3 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Estilos Temporales
+@media screen and (min-width:1400px){
+	.container-products{
+		max-width: 720px;
+	}
+}

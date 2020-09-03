@@ -25,7 +25,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('images/thulio-logo.jpg') }}" width="90" height="47" class="d-inline-block align-top" alt="" loading="lazy">
+                    <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -35,7 +36,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('shops.create') }}">Abre tu tienda</a>
+                            <a class="nav-link" href="{{ route('shops.create') }}">Tu tienda</a>
                         </li>
                     </ul>
 
@@ -45,8 +46,8 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart.index') }}">
-                                 <i class="fas fa-cart-arrow-down text-dark fa-2x"></i>
-                                <div class="badge badge-dark">
+                                 <i class="fas fa-cart-arrow-down text-primary fa-2x"></i>
+                                <div class="badge badge-primary">
                                     @auth
                                     {{ Cart::session(auth()->id())->getContent()->count() }}
                                     @else
@@ -68,7 +69,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -105,7 +106,7 @@
         </div>
         @endif
 
-        <main class="py-4 container">
+        <main class="container py-4">
             @yield('content')
         </main>
     </div>

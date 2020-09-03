@@ -17,7 +17,7 @@
         <textarea class="form-control" name="description" id="" rows="3"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-dark">Enviar</button>
+    <button type="submit" class="btn btn-primary">Enviar</button>
 
 </form>
 
