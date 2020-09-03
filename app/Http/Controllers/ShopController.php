@@ -67,7 +67,7 @@ class ShopController extends Controller
      */
     public function show(Shop $shop)
     {
-        //
+        dd('Hola '.$shop->owner->name, 'Bienvenido a tu tienda ' . $shop->name.'.');
     }
 
     /**
