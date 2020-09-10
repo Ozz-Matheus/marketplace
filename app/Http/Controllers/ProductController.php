@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -14,28 +16,34 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index');
+        $categoryId = request('category_id');
+        $categoryName = null;
+
+        if($categoryId) {
+
+            $category = Category::findOrFail($categoryId);
+            $categoryName = ucfirst($category->name);
+            $products = $category->products;
+
+        }else{
+
+            $products = Product::take(10)->get();
+        }
+
+        return view('product.index', compact('products', 'categoryName'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display the specified resource.
      *
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $query = $request->input('query');
+        $products = Product::where('name','LIKE',"%$query%")->paginate(10);
+        return view('product.search',compact('products'));
     }
 
     /**
@@ -46,40 +54,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        //
+        return view('product.show', compact('product'));
     }
 }
