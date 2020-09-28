@@ -93,7 +93,7 @@ class OrderController extends Controller
         }
 
 
-       // $order->generateSubOrders();
+       $order->generateSubOrders();
 
         //empty cart
         \Cart::session(auth()->id())->clear();
